@@ -8,7 +8,7 @@ const [goals, setGoals] = useState([])
 
 function handleAddGoal(enteredGoalText) {
   console.log(enteredGoalText)
-  setGoals(()=>[...goals, {text: enteredGoalText}])
+  setGoals(()=>[...goals, {text: enteredGoalText, key: Math.random().toString()}])
 }
 
 function handleDeleteGoal(){
@@ -21,17 +21,18 @@ function handleDeleteGoal(){
       onAddGoal={handleAddGoal}
     />
       <View style={styles.goalsContainer}>
+ 
         <FlatList 
           data={goals}
-          renderItem={(itemData) =>{
+          renderItem={(itemData) => {
+            return(
             <GoalItem 
               itemData={itemData}
               OnDeleteItem={handleDeleteGoal}
             />
+            )
           }}
-          keyExtractor={(item) => {
-            return item.id
-          }}
+          key={Math.random().toString()}
         />
       </View>
     </View>
