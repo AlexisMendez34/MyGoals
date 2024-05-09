@@ -11,8 +11,10 @@ function handleAddGoal(enteredGoalText) {
   setGoals(()=>[...goals, {text: enteredGoalText, key: Math.random().toString()}])
 }
 
-function handleDeleteGoal(){
+function handleDeleteGoal(id){
   console.log("DELETE")
+  const deleteGoal = goals.filter((goal) =>{return goal.key !== id})
+  setGoals(deleteGoal)
 }
 
   return (
@@ -29,6 +31,7 @@ function handleDeleteGoal(){
             <GoalItem 
               itemData={itemData}
               OnDeleteItem={handleDeleteGoal}
+              id={itemData.item.key}
             />
             )
           }}

@@ -1,8 +1,12 @@
 import { StyleSheet, View, Text, Pressable } from "react-native";
 
-function GoalItem({itemData, OnDeleteItem}){
+function GoalItem({itemData, OnDeleteItem, id}){
+    function deleteGoalHandler(){
+        OnDeleteItem(id)
+        console.log('Delete Goal Handdler')
+    }
     return(
-        <Pressable onPress={OnDeleteItem}>
+        <Pressable onPress={deleteGoalHandler}>
             <View style={styles.goalsItem}> 
                 <Text style={styles.goalText}>{itemData.item.text}</Text>
             </View>
